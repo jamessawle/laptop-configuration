@@ -33,7 +33,6 @@
     casks = [
       "1password"
       "google-chrome"
-      "iterm2"
       "logseq"
       "nosql-workbench"
       "plover"

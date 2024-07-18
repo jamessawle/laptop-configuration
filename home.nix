@@ -13,20 +13,17 @@
     preferXdgDirectories = true;
 
     packages = [
-      pkgs.bat
       pkgs.circleci-cli
       pkgs.fnm
       pkgs.k6
       pkgs.neofetch
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
-      pkgs.poetry
+      (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
       pkgs.ruby
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'. But this allows for copying whole files.
     file = {
-
     };
 
     sessionVariables = {
@@ -35,6 +32,24 @@
 
   programs = {
     awscli.enable = true;
+
+    bat = {
+      enable = true;
+      config = {
+        theme = "macchiato";
+      };
+      themes = {
+        macchiato = {
+          src = pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "bat";
+            rev = "d714cc1d358ea51bfc02550dabab693f70cccea0";
+            sha256 = "sha256-Q5B4NDrfCIK3UAMs94vdXnR42k4AXCqZz6sRn8bzmf4=";
+          };
+          file = "themes/Catppuccin\ Macchiato.tmTheme";
+        };
+      };
+    };
 
     gh = {
       enable = true;
@@ -151,8 +166,39 @@
       useTheme = "sim-web";
     };
 
+    poetry.enable = true;
+
+    ssh = {
+      enable = true;
+      extraConfig = "IdentityAgent ~/.1password/agent.sock";
+    };
+
     vscode = {
       enable = true;
+      extensions = (with pkgs.vscode-extensions; [
+        bbenoist.nix
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
+        github.vscode-github-actions
+      ]);
+      userSettings = {
+        "[json]" = {
+          "editor.defaultFormatter" = "vscode.json-language-features";
+        };
+        "editor.accessibilitySupport" = "off";
+        "editor.fontFamily" = "'FiraCode Nerd Font', Monaco, 'Courier New', monospace";
+        "editor.fontLigatures" = true;
+        "editor.inlineSuggest.enabled" = true;
+        "editor.largeFileOptimizations" = true;
+        "security.workspace.trust.banner" = "always";
+        "workbench.colorTheme" = "Catppuccin Macchiato";
+        "workbench.iconTheme" = "catppuccin-macchiato";
+        "editor.fontSize" = 8;
+        "git.ignoreRebaseWarning" = true;
+        "circleci.hostUrl" = "";
+        "window.zoomLevel" = 4;
+        "diffEditor.ignoreTrimWhitespace" = false;
+      };
     };
 
     zsh = {
@@ -160,18 +206,24 @@
       antidote = {
         enable = true;
         plugins = [
-          "zsh-users/zsh-completions"
           "zsh-users/zsh-autosuggestions"
+          "zsh-users/zsh-completions"
+          "zsh-users/zsh-history-substring-search"
         ];
       };
       autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
       shellAliases = {
         cat = "bat";
         ll = "ls -l";
+        npm-aws = "aws sso login --profile codeartifact && export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain gousto --domain-owner 472493421475 --query authorizationToken --output text --profile codeartifact` && aws codeartifact login --tool npm --repository proxy-repository --domain gousto --domain-owner 472493421475 --profile codeartifact";
+        npm-reset = "npm config set registry https://registry.npmjs.org/";
         ".." = "cd ..";
       };
-      syntaxHighlighting.enable = true;
-      initExtra = "eval \"$(fnm env --use-on-cd)\"";
+      initExtra = ''
+        eval "$(fnm env --use-on-cd)"
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      '';
     };
   };
 }

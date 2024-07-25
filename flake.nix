@@ -4,6 +4,7 @@
   inputs = {
     # Package sets
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Environment/system management
     home-manager.url = "github:nix-community/home-manager/release-24.05";
@@ -12,7 +13,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs }: {
+  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nixpkgs-unstable }: {
     darwinConfigurations = {
       "OVMG468" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -22,6 +23,9 @@
           {
             home-manager = {
               users."james.sawle" = import ./home.nix;
+              extraSpecialArgs = { 
+                pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+               };
             };
             users.users."james.sawle".home = "/Users/james.sawle";
           }

@@ -14,7 +14,7 @@ https://github.com/DeterminateSystems/nix-installer
 ```
 
 ### Checkout configuration
-Checkout the configuration from the following repository, to any folder on the host machine, such as `~/.config/nix`. Remember the location, as it will be used everytime that the configuration is updated.
+Checkout the configuration from the following repository, to any folder on the host machine, such as `~/.config/nix`. Remember the location, as it will be used every time that the configuration is updated.
 
 ```bash
 https://github.com/jamessawle/laptop-configuration
@@ -32,3 +32,9 @@ If `nix-darwin` is already installed on the machine, run this instead:
 ```bash
 darwin-rebuild switch --flake <path-to-config>
 ```
+
+### neovim configuration
+This repository does not currently contain any neovim configuration, and instead requires you to bring your own; however, this might change in the future.
+
+The recommendation is to use a neovim distribution such as [lazyvim](https://www.lazyvim.org/) as the basis of your configuration.
+

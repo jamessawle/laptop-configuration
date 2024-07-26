@@ -23,7 +23,7 @@
           {
             home-manager = {
               users."james.sawle" = import ./home.nix;
-              extraSpecialArgs = { 
+              extraSpecialArgs = {
                 pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
                };
             };

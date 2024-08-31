@@ -7,6 +7,8 @@
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
       github.vscode-github-actions
+      jakebecker.elixir-ls
+      jnoortheen.nix-ide
     ]);
     userSettings = {
       "[json]" = {
@@ -18,7 +20,7 @@
       "editor.inlineSuggest.enabled" = true;
       "editor.largeFileOptimizations" = true;
       "security.workspace.trust.banner" = "always";
-      "workbench.colorTheme" = "Catppuccin Maocha";
+      "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";
       "editor.fontSize" = 8;
       "git.ignoreRebaseWarning" = true;

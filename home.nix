@@ -1,10 +1,7 @@
-{ config, pkgs, pkgs-unstable, lib, ... }:
+{ pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "vscode"
-    ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ "vscode" ];
 
   editorconfig = {
     enable = true;
@@ -27,6 +24,8 @@
 
     packages = with pkgs; [
       circleci-cli
+      elixir
+      elixir_ls
       fnm
       k6
       neofetch
@@ -34,9 +33,7 @@
       ruby
     ];
 
-    sessionPath = [
-      "$HOME/.local/bin"
-    ];
+    sessionPath = [ "$HOME/.local/bin" ];
   };
 
   imports = [

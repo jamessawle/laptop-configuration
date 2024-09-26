@@ -18,7 +18,7 @@
     shellAliases = {
       cat = "bat";
       ll = "ls -l";
-      npm-aws = "aws sso login --profile codeartifact && export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain gousto --domain-owner 472493421475 --query authorizationToken --output text --profile codeartifact` && aws codeartifact login --tool npm --repository proxy-repository --domain gousto --domain-owner 472493421475 --profile codeartifact";
+      npm-aws = "aws sso login --profile artefacts-engineer && export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain gousto --domain-owner 472493421475 --query authorizationToken --output text --profile artefacts-engineer` && aws codeartifact login --tool npm --repository proxy-repository --domain gousto --domain-owner 472493421475 --profile artefacts-engineer";
       npm-reset = "npm config set registry https://registry.npmjs.org/";
       ".." = "cd ..";
     };

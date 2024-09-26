@@ -15,7 +15,7 @@
 
   outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nixpkgs-unstable }: {
     darwinConfigurations = {
-      "OVMG468" = nix-darwin.lib.darwinSystem {
+      "ML-1299" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
           ./darwin.nix

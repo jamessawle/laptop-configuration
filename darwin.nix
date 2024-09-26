@@ -32,13 +32,14 @@
 
     casks = [
       "1password"
-      "google-chrome"
+      "1password-cli"
+      # "google-chrome"
       "logseq"
       "nosql-workbench"
       "plover"
       "postman"
       "raycast"
-      "slack"
+      # "slack"
       "tableplus"
     ];
   };

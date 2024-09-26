@@ -33,7 +33,10 @@
       ruby
     ];
 
-    sessionPath = [ "$HOME/.local/bin" ];
+    sessionPath = [ 
+      "$HOME/.local/bin"
+      "$HOME/Library/Python/3.9/bin" 
+    ];
   };
 
   imports = [
@@ -65,7 +68,7 @@
 
     ssh = {
       enable = true;
-      extraConfig = "IdentityAgent ~/.1password/agent.sock";
+      extraConfig = "IdentityAgent \"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
     };
   };
 }

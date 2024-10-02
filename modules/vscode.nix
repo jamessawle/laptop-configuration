@@ -6,9 +6,11 @@
       bbenoist.nix
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
+      eamodio.gitlens
       github.vscode-github-actions
       jakebecker.elixir-ls
       jnoortheen.nix-ide
+      ms-azuretools.vscode-docker
     ]);
     userSettings = {
       "[json]" = {
@@ -25,7 +27,7 @@
       "editor.fontSize" = 8;
       "git.ignoreRebaseWarning" = true;
       "circleci.hostUrl" = "";
-      "window.zoomLevel" = 4;
+      "window.zoomLevel" = 1;
       "diffEditor.ignoreTrimWhitespace" = false;
     };
   };

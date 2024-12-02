@@ -24,6 +24,7 @@
 
     packages = with pkgs; [
       circleci-cli
+      colima
       elixir
       elixir_ls
       fnm

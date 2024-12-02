@@ -6,7 +6,7 @@
       "--listen-on=unix:/tmp/mykitty --single-instance"
     ];
     font.name = "FiraCode Nerd Font Mono";
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     shellIntegration.enableZshIntegration = true;
   };
 }

@@ -33,6 +33,7 @@
     casks = [
       "1password"
       "1password-cli"
+      "docker"
       # "google-chrome"
       "logseq"
       "nosql-workbench"

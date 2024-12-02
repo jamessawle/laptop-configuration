@@ -7,8 +7,8 @@
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
       eamodio.gitlens
+      elixir-lsp.vscode-elixir-ls
       github.vscode-github-actions
-      jakebecker.elixir-ls
       jnoortheen.nix-ide
       ms-azuretools.vscode-docker
     ]);

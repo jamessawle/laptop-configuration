@@ -30,10 +30,13 @@
     enable = true;
     onActivation.cleanup = "uninstall";
 
+    brews = [
+      "docker-compose"
+    ];
+
     casks = [
       "1password"
       "1password-cli"
-      "docker"
       # "google-chrome"
       "logseq"
       "nosql-workbench"

@@ -11,6 +11,7 @@
       github.vscode-github-actions
       jnoortheen.nix-ide
       ms-azuretools.vscode-docker
+      ms-vsliveshare.vsliveshare
     ]);
     userSettings = {
       "[json]" = {

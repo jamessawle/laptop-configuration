@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ "vscode" ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ 
+    "vscode"
+    "vscode-extension-ms-vsliveshare-vsliveshare"
+  ];
 
   editorconfig = {
     enable = true;
@@ -19,7 +22,7 @@
   fonts.fontconfig.enable = true;
 
   home = {
-    stateVersion = "24.05"; # Read home-manager changelog before changing.
+    stateVersion = "24.11"; # Read home-manager changelog before changing.
     preferXdgDirectories = true;
 
     packages = with pkgs; [
@@ -31,6 +34,7 @@
       k6
       neofetch
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nodePackages.aws-cdk
       ruby
     ];
 

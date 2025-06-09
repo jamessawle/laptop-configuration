@@ -11,6 +11,8 @@
       github.vscode-github-actions
       jnoortheen.nix-ide
       ms-azuretools.vscode-docker
+      ms-python.python
+      ms-vscode.makefile-tools
       ms-vsliveshare.vsliveshare
     ]);
     userSettings = {

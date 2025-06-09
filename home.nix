@@ -28,6 +28,7 @@
     packages = with pkgs; [
       circleci-cli
       colima
+      docker
       elixir
       elixir_ls
       fnm
@@ -35,7 +36,9 @@
       neofetch
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nodePackages.aws-cdk
+      qmk
       ruby
+      uv
     ];
 
     sessionPath = [ 
@@ -69,7 +72,17 @@
       useTheme = "catppuccin_mocha";
     };
 
-    poetry.enable = true;
+    poetry = {
+      enable = true;
+      settings = {
+        cache-dir = "~/.cache/poetry";
+      };
+    };
+
+    pyenv = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
     ssh = {
       enable = true;

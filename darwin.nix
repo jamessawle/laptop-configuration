@@ -38,6 +38,7 @@
       "1password"
       "1password-cli"
       # "google-chrome"
+      "karabiner-elements"
       "logseq"
       "nosql-workbench"
       "plover"

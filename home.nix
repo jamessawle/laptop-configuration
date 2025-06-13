@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
-{
+let
+  moduleFiles = builtins.attrNames (builtins.readDir ./modules);
+  modulePaths = builtins.filter (file: lib.hasSuffix ".nix" file) moduleFiles;
+in {
+  imports = map (file: ./modules + "/${file}") modulePaths;
+
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ 
     "vscode"
     "vscode-extension-ms-vsliveshare-vsliveshare"
@@ -22,7 +27,7 @@
   fonts.fontconfig.enable = true;
 
   home = {
-    stateVersion = "24.11"; # Read home-manager changelog before changing.
+    stateVersion = "25.05"; # Read home-manager changelog before changing.
     preferXdgDirectories = true;
 
     packages = with pkgs; [
@@ -34,7 +39,7 @@
       fnm
       k6
       neofetch
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nerd-fonts.fira-code
       nodePackages.aws-cdk
       qmk
       ruby
@@ -47,21 +52,19 @@
     ];
   };
 
-  imports = [
-    ./modules/bat.nix
-    ./modules/git.nix
-    ./modules/kitty.nix
-    ./modules/neovim.nix
-    ./modules/vscode.nix
-    ./modules/zsh.nix
-  ];
+  bat.enable = true;
+  git.enable = true;
+  kitty.enable = true;
+  macos.enable = true;
+  neovim.enable = true;
+  vscode.enable = true;
 
   programs = {
     awscli.enable = true;
 
-    bottom = {
-      enable = true;
-    };
+    bottom.enable = true;
+
+    gpg.enable = true;
 
     home-manager.enable = true;
 
@@ -88,5 +91,10 @@
       enable = true;
       extraConfig = "IdentityAgent \"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
     };
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
   };
 }
